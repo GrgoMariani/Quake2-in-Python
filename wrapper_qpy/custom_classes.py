@@ -3,9 +3,9 @@ class Mutable:
     def __init__(self, value):
         self.x = [value]
 
-    def GetMutable(self):
+    def GetValue(self):
         return self.x[0]
 
-    def SetMutable(self, value):
+    def SetValue(self, value):
         self.x[0] = value
 

@@ -5,6 +5,8 @@ rd_buffer = None
 rd_buffersize = 0
 rd_flush = None
 
+server_state = 0
+
 
 def Com_BeginRedirect(target, buffer, buffersize, flush):
     global rd_target, rd_buffer, rd_buffersize, rd_flush
@@ -26,6 +28,15 @@ def Com_EndRedirect():
 def Com_Printf(msg):
     # TODO: not finished
     pass
+
+
+def Com_ServerState():
+    return server_state
+
+
+def Com_SetServerState(state):
+    global server_state
+    server_state = state
 
 
 def Qcommon_Init(argc, argv):

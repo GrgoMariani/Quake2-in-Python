@@ -260,7 +260,7 @@ def _VectorAdd(veca, vecb, out):
 
 
 def _VectorCopy(_in, out: Mutable):
-    out.SetMutable(_in.copy())
+    out.SetValue(_in.copy())
 
 
 def CrossProduct(v1, v2, cross):
@@ -305,7 +305,7 @@ def COM_SkipPath(pathname):
 # MODIFIED out variable should be a list
 def COM_StripExtension(_in, out: Mutable):
     result = os.path.splitext(_in)[0]
-    out.SetMutable(result)
+    out.SetValue(result)
 
 
 def COM_FileExtension(_in):
@@ -314,7 +314,7 @@ def COM_FileExtension(_in):
 
 def COM_FilePath(_in, out: Mutable):
     result = os.path.dirname(_in) + "/"
-    out.SetMutable(result)
+    out.SetValue(result)
 
 
 # ############# BYTE ORDER FUNCTIONS ###############
@@ -354,15 +354,15 @@ def va(format_string):
 
 
 def COM_Parse(_data_p: Mutable):
-    data_p = _data_p.GetMutable()
+    data_p = _data_p.GetValue()
     if data_p is None or len(data_p) == 0:
-        _data_p.SetMutable(None)
+        _data_p.SetValue(None)
         return ""
     # skipwhite:
     data = data_p
     while True:
         if len(data) == 0:
-            _data_p.SetMutable(None)
+            _data_p.SetValue(None)
             return ""
         # skip whitespace
         data = data.strip()
@@ -374,14 +374,14 @@ def COM_Parse(_data_p: Mutable):
         # handle quoted strings specially
         if data[0] == '\"':
             r = data[1:].split("\"")
-            _data_p.SetMutable("\"".join(r[1:]))
+            _data_p.SetValue("\"".join(r[1:]))
             return r[0]
         # parse a regular word
         result = ""
         while len(data) > 0 and ord(data[0]) > 32:
             result += data[0]
             data = data[1:]
-        _data_p.SetMutable(data)
+        _data_p.SetValue(data)
         return result
 
 
@@ -411,11 +411,11 @@ def Q_strcasecmp(s1, s2):
 def Com_sprintf(dest: Mutable, size, fmt):
     if len(fmt) > size:
         Com_Printf("Com_sprintf: overflow of %i in %i\n", len, size)
-    dest.SetMutable(fmt[0:size])
+    dest.SetValue(fmt[0:size])
 
 
 def Info_ValueForKey(_s: Mutable, key):
-    s = _s.GetMutable()
+    s = _s.GetValue()
     if s[0] == "\\":
         s = s[1:]
     pkey = ""
@@ -424,24 +424,24 @@ def Info_ValueForKey(_s: Mutable, key):
             pkey += s[0]
             s = s[1:]
             if len(s) == 0:
-                _s.SetMutable(s)
+                _s.SetValue(s)
                 return ""
         value = ""
         while len(s) > 0 and s[0] != '\\ ':
             value += s[0]
             s = s[1:]
         if key == pkey:
-            _s.SetMutable(s)
+            _s.SetValue(s)
             return value
         if len(s) == 0:
-            _s.SetMutable(s)
+            _s.SetValue(s)
             return ""
         s = s[1:]
-        _s.SetMutable(s)
+        _s.SetValue(s)
 
 
 def Info_RemoveKey(_s: Mutable, key):
-    s = _s.GetMutable()
+    s = _s.GetValue()
     if '\\' in s:
         # Com_Printf ("Can't use a key with a \\\n")
         return
@@ -451,7 +451,7 @@ def Info_RemoveKey(_s: Mutable, key):
         pkey = ""
         while s[0] != '\\':
             if len(s) == 0:
-                _s.SetMutable(s)
+                _s.SetValue(s)
                 return
             pkey += s[0]
             s = s[1:]
@@ -460,9 +460,9 @@ def Info_RemoveKey(_s: Mutable, key):
         while len(s) > 0 and s[0] != '\\':
             value += s[0]
             s = s[1:]
-        _s.SetMutable(s)
+        _s.SetValue(s)
         if key == pkey or len(s) == 0:
-            _s.SetMutable(s)
+            _s.SetValue(s)
             return
 
 
@@ -473,7 +473,7 @@ def Info_Validate(s):
 
 
 def Info_SetValueForKey(_s: Mutable, key, value):
-    s = _s.GetMutable()
+    s = _s.GetValue()
     if '\\' in key or '\\' in value:
         Com_Printf("Can't use keys or values with a \\\n")
         return
@@ -488,16 +488,16 @@ def Info_SetValueForKey(_s: Mutable, key, value):
         return
     temp_mut = Mutable(s)
     Info_RemoveKey(temp_mut, key)
-    s = temp_mut.GetMutable()
+    s = temp_mut.GetValue()
     if len(value) != 0:
-        _s.SetMutable(s)
+        _s.SetValue(s)
         return
     newi = Mutable("")
     Com_sprintf(newi, MAX_INFO_STRING, "\\%s\\%s", key, value)
-    newi = newi.GetMutable()
+    newi = newi.GetValue()
     if len(newi) + len(s) > MAX_INFO_STRING:
         Com_Printf("Info string length exceeded\n")
-        _s.SetMutable(s)
+        _s.SetValue(s)
         return
     # TODO: only copy ascii values missing
     v = newi
@@ -505,4 +505,4 @@ def Info_SetValueForKey(_s: Mutable, key, value):
         c = ord(v[0]) & 127
         if 32 <= c < 127:
             s += c
-    _s.SetMutable(s)
+    _s.SetValue(s)
