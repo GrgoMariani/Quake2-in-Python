@@ -4,7 +4,7 @@
 """
 
 
-def CDAudio_GetAudioDiskInfo(track, looping):
+def CDAudio_Play2(track, looping):
     pass
 
 
