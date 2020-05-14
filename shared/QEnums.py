@@ -299,12 +299,18 @@ class Q_angle_indexes(Enum):
 class PRINT_LVL(Enum):
     PRINT_ALL = 0
     PRINT_DEVELOPER = 1
+    PRINT_ALERT = 2
+    PRINT_LOW = 0
+    PRINT_MEDIUM = 1
+    PRINT_HIGH = 2
+    PRINT_CHAT = 3
 
 
 class ERROR_LVL(Enum):
     ERR_FATAL = 0
     ERR_DROP = 1
     ERR_QUIT = 2
+    ERR_DISCONNECT = 2
 
 
 class EXEC_LVL(Enum):

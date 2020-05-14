@@ -70,7 +70,7 @@ def Cvar_Get(var_name, var_value, flags):
         return var
     if var_value is None:
         return None
-    if flags & (CVAR_ENUM.CVAR_USERINFO | CVAR_ENUM.CVAR_SERVERINFO)
+    if flags & (CVAR_ENUM.CVAR_USERINFO | CVAR_ENUM.CVAR_SERVERINFO):
         if not Cvar_InfoValidate(var_value):
             Com_Printf("invalid info cvar value")
             return None
@@ -103,7 +103,7 @@ def Cvar_Set2(var_name, value, force):
                 if value == var.latched_string:
                     return var
             else:
-                if value == var.string
+                if value == var.string:
                     return var
             if Com_ServerState():
                 Com_Printf("%s will be changed for next game.\n", var_name)
@@ -160,7 +160,7 @@ def Cvar_SetValue(var_name, value):
     Cvar_Set(var_name, val.GetValue())
 
 
-def Cvar_GetLatchedVars()
+def Cvar_GetLatchedVars():
     for var in cvar_vars:
         if len(var.latched_string) == 0:
             continue

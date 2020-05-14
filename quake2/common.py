@@ -1,4 +1,31 @@
-from wrapper_qpy.decorators import va_args
+from wrapper_qpy.decorators import va_args, va_args2, static_vars
+from wrapper_qpy.custom_classes import Mutable
+from .console import Con_Print
+from .q_shared import Com_sprintf, va
+from .files import FS_Gamedir
+from .cl_main import CL_Drop, CL_Shutdown
+from .sv_main import SV_Shutdown
+from shared.QEnums import ERROR_LVL
+
+
+MAXPRINTMSG = 4096
+MAX_NUM_ARGVS = 50
+MAX_QPATH = 64
+
+com_argv = list()
+
+realtime = 0
+
+host_speeds = None
+log_stats = None
+developer = None
+timescale = None
+fixedtime = None
+logfile_active = None
+showtrace = None
+dedicated = None
+
+logfile = None
 
 rd_target = 0
 rd_buffer = None
@@ -26,7 +53,66 @@ def Com_EndRedirect():
 
 @va_args
 def Com_Printf(msg):
-    # TODO: not finished
+    global rd_buffer
+    if rd_target > 0:
+        if len(msg) + len(rd_buffer) > rd_buffersize -1:
+            rd_flush(rd_target, rd_buffer)
+        rd_buffer = msg
+        return
+    Con_Print(msg)
+    quake2.sys_win.Sys_ConsoleOutput(msg)
+    if logfile_active is not None and logfile_active.value > 0:
+        global logfile
+        if logfile is None:
+            name = Mutable()
+            Com_sprintf(name, MAX_QPATH, "%s/qconsole.log", FS_Gamedir())
+            logfile = open(name.GetValue(), "w")
+        else:
+            logfile.print(msg)
+        if logfile_active.value > 1:
+            logfile.flush()
+
+
+def Com_DPrintf(msg):
+    if developer is None or developer.value == 0:
+        return
+    Con_Print("%s", msg)
+
+
+
+@va_args2(1)
+@static_vars(recursive=False)
+def Com_Error(code, msg):
+    if Com_Error.recursive:
+        quake2.sys_win.Sys_Error("recursive error after: %s", msg)
+    Com_Error.recursive = True
+    if code == ERROR_LVL.ERR_DISCONNECT:
+        CL_Drop()
+        Com_Error.recursive = False
+        # TODO: abortframe longjmp
+    elif code == ERROR_LVL.ERR_DROP:
+        Com_Printf("********************\nERROR: %s\n********************\n", msg)
+        SV_Shutdown(va("Server crashed: %s\n", msg), False)
+        CL_Drop()
+        Com_Error.recursive = False
+        # TODO: abortframe longjmp
+    else:
+        SV_Shutdown(va("Server fatal crashed: %s\n", msg), False)
+        CL_Shutdown()
+    global logfile
+    if logfile is not None:
+        logfile.flush()
+        logfile.close()
+        logfile = None
+    quake2.sys_win.Sys_Error("%s", msg)
+
+
+
+def SZ_Init(buf, data, length):
+    pass
+
+
+def SZ_Write(buf, data, length):
     pass
 
 
@@ -42,3 +128,7 @@ def Com_SetServerState(state):
 def Qcommon_Init(argc, argv):
     # TODO: not finished
     pass
+
+
+
+from .sys_win import Sys_ConsoleOutput, Sys_Error

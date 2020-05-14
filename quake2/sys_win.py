@@ -11,6 +11,10 @@ def Sys_Error(error):
     exit(1)
 
 
+def Sys_ConsoleOutput(string):
+    pass
+
+
 def WinMain(argc, argv):
     Qcommon_Init(argc, argv)
     # TODO: continue from here

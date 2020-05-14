@@ -1,6 +1,9 @@
 from wrapper_qpy.decorators import static_vars
 
 
+def CL_Drop():
+    pass
+
 
 def CL_WriteConfiguration()
     pass

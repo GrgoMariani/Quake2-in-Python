@@ -5,3 +5,13 @@ class cplane_t:
         self.type = 0
         self.signbits = 0
         self.pad = [0, 0]
+
+
+class sizebuf_t:
+    def __init__(self):
+        self.allowoverflow = False
+        self.overflowed = False
+        self.data = None
+        self.maxsize = 0
+        self.cursize = 0
+        self.readcount = 0
