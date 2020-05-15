@@ -1,5 +1,7 @@
-from .common import SZ_Init, SZ_Write, Com_Printf
 from shared.QClasses import sizebuf_t
+from wrapper_qpy.linker import LinkEmptyFunctions
+
+LinkEmptyFunctions(globals(), ["SZ_Init", "SZ_Write", "Com_Printf"])
 
 MAX_ALIAS_NAME = 32
 ALIAS_LOOP_COUNT = 16
@@ -52,3 +54,6 @@ def Cmd_Argv(arg):
 def Cmd_AddCommand(cmd_name, function):
 
     pass
+
+
+from .common import SZ_Init, SZ_Write, Com_Printf

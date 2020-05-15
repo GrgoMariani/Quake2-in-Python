@@ -1,10 +1,9 @@
 from shared.QEnums import CVAR_ENUM
-from .common import Com_Printf, Com_ServerState
-from .q_shared import Com_sprintf, Info_SetValueForKey
-from .files import FS_ExecAutoexec, FS_SetGameDir
-from .cmd import Cmd_Argc, Cmd_Argv, Cmd_AddCommand
 from wrapper_qpy.custom_classes import Mutable
+from wrapper_qpy.linker import LinkEmptyFunctions
 
+LinkEmptyFunctions(globals(), ["Com_Printf", "Com_ServerState", "Com_sprintf", "Info_SetValueForKey", "FS_ExecAutoexec",
+                               "FS_SetGameDir", "Cmd_Argc", "Cmd_Argv", "Cmd_AddCommand"])
 
 class cvar_t:
     def __init__(self):
@@ -253,3 +252,10 @@ def Cvar_Serverinfo():
 def Cvar_Init():
     Cmd_AddCommand("set", Cvar_Set_f)
     Cmd_AddCommand("cvarlist", Cvar_List_f)
+
+
+
+from .common import Com_Printf, Com_ServerState
+from .q_shared import Com_sprintf, Info_SetValueForKey
+from .files import FS_ExecAutoexec, FS_SetGameDir
+from .cmd import Cmd_Argc, Cmd_Argv, Cmd_AddCommand

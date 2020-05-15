@@ -1,10 +1,14 @@
 import math
 
 from wrapper_qpy.decorators import static_vars, va_args, va_args2
-from shared.QEnums import Q_angle_indexes
 from wrapper_qpy.custom_classes import Mutable
+from wrapper_qpy.linker import LinkEmptyFunctions
+from shared.QEnums import Q_angle_indexes
 from shared.QConstants import *
-from .g_main import Com_Printf
+
+
+LinkEmptyFunctions(globals(), ["Com_Printf"])
+
 
 def DEG2RAD(a):
     return math.radians(a)
@@ -503,6 +507,10 @@ def Info_SetValueForKey(_s: Mutable, key, value):
     v = newi
     while len(newi) > 0:
         c = ord(v[0]) & 127
-        if 32 <= c < 127
+        if 32 <= c < 127:
             s += c
     _s.SetValue(s)
+
+
+
+from .g_main import Com_Printf

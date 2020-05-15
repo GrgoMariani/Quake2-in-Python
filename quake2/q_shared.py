@@ -1,9 +1,13 @@
 import math
 
 from wrapper_qpy.decorators import static_vars, va_args, va_args2
-from shared.QEnums import Q_angle_indexes
 from wrapper_qpy.custom_classes import Mutable
+from wrapper_qpy.linker import LinkEmptyFunctions
+from shared.QEnums import Q_angle_indexes
 from shared.QConstants import *
+
+
+LinkEmptyFunctions(globals(), ["Com_Printf"])
 
 
 def DEG2RAD(a):
@@ -410,7 +414,7 @@ def Q_strcasecmp(s1, s2):
 @va_args2(2)
 def Com_sprintf(dest: Mutable, size, fmt):
     if len(fmt) > size:
-        quake2.common.Com_Printf("Com_sprintf: overflow of %i in %i\n", len, size)
+        Com_Printf("Com_sprintf: overflow of %i in %i\n", len, size)
     dest.SetValue(fmt[0:size])
 
 
@@ -443,7 +447,7 @@ def Info_ValueForKey(_s: Mutable, key):
 def Info_RemoveKey(_s: Mutable, key):
     s = _s.GetValue()
     if '\\' in s:
-        quake2.common.Com_Printf ("Can't use a key with a \\\n")
+        Com_Printf ("Can't use a key with a \\\n")
         return
     while True:
         if s[0] != '\\':
@@ -475,16 +479,16 @@ def Info_Validate(s):
 def Info_SetValueForKey(_s: Mutable, key, value):
     s = _s.GetValue()
     if '\\' in key or '\\' in value:
-        quake2.common.Com_Printf("Can't use keys or values with a \\\n")
+        Com_Printf("Can't use keys or values with a \\\n")
         return
     if ';' in key:
-        quake2.common.Com_Printf("Can't use keys or values with a semicolon\n")
+        Com_Printf("Can't use keys or values with a semicolon\n")
         return
     if '\"' in key or '\"' in value:
-        quake2.common.Com_Printf("Can't use keys or values with a \"\n")
+        Com_Printf("Can't use keys or values with a \"\n")
         return
     if len(key) > MAX_INFO_KEY -1 or len(value) > MAX_INFO_KEY -1:
-        quake2.common.Com_Printf("Keys and values must be < 64 characters.\n")
+        Com_Printf("Keys and values must be < 64 characters.\n")
         return
     temp_mut = Mutable(s)
     Info_RemoveKey(temp_mut, key)
@@ -496,7 +500,7 @@ def Info_SetValueForKey(_s: Mutable, key, value):
     Com_sprintf(newi, MAX_INFO_STRING, "\\%s\\%s", key, value)
     newi = newi.GetValue()
     if len(newi) + len(s) > MAX_INFO_STRING:
-        quake2.common.Com_Printf("Info string length exceeded\n")
+        Com_Printf("Info string length exceeded\n")
         _s.SetValue(s)
         return
     # TODO: only copy ascii values missing

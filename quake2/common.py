@@ -1,12 +1,10 @@
 from wrapper_qpy.decorators import va_args, va_args2, static_vars
 from wrapper_qpy.custom_classes import Mutable
-from .console import Con_Print
-from .q_shared import Com_sprintf, va
-from .files import FS_Gamedir
-from .cl_main import CL_Drop, CL_Shutdown
-from .sv_main import SV_Shutdown
+from wrapper_qpy.linker import LinkEmptyFunctions
 from shared.QEnums import ERROR_LVL
 
+LinkEmptyFunctions(globals(), ["Con_Print", "Com_sprintf", "va", "FS_Gamedir", "CL_Drop", "CL_Shutdown", "SV_Shutdown",
+                               "Sys_ConsoleOutput", "Sys_Error"])
 
 MAXPRINTMSG = 4096
 MAX_NUM_ARGVS = 50
@@ -60,7 +58,7 @@ def Com_Printf(msg):
         rd_buffer = msg
         return
     Con_Print(msg)
-    quake2.sys_win.Sys_ConsoleOutput(msg)
+    Sys_ConsoleOutput(msg)
     if logfile_active is not None and logfile_active.value > 0:
         global logfile
         if logfile is None:
@@ -84,7 +82,7 @@ def Com_DPrintf(msg):
 @static_vars(recursive=False)
 def Com_Error(code, msg):
     if Com_Error.recursive:
-        quake2.sys_win.Sys_Error("recursive error after: %s", msg)
+        Sys_Error("recursive error after: %s", msg)
     Com_Error.recursive = True
     if code == ERROR_LVL.ERR_DISCONNECT:
         CL_Drop()
@@ -104,8 +102,7 @@ def Com_Error(code, msg):
         logfile.flush()
         logfile.close()
         logfile = None
-    quake2.sys_win.Sys_Error("%s", msg)
-
+    Sys_Error("%s", msg)
 
 
 def SZ_Init(buf, data, length):
@@ -132,3 +129,8 @@ def Qcommon_Init(argc, argv):
 
 
 from .sys_win import Sys_ConsoleOutput, Sys_Error
+from .console import Con_Print
+from .q_shared import Com_sprintf, va
+from .files import FS_Gamedir
+from .cl_main import CL_Drop, CL_Shutdown
+from .sv_main import SV_Shutdown

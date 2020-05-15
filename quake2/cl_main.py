@@ -5,7 +5,7 @@ def CL_Drop():
     pass
 
 
-def CL_WriteConfiguration()
+def CL_WriteConfiguration():
     pass
 
 
