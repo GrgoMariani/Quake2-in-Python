@@ -1,6 +1,6 @@
 import math
 
-from wrapper_qpy.decorators import static_vars, va_args, va_args2
+from wrapper_qpy.decorators import static_vars, va_args, va_args2, TODO
 from wrapper_qpy.custom_classes import Mutable
 from wrapper_qpy.linker import LinkEmptyFunctions
 from shared.QEnums import Q_angle_indexes
@@ -323,27 +323,34 @@ def COM_FilePath(_in, out: Mutable):
 
 # ############# BYTE ORDER FUNCTIONS ###############
 
+@TODO
 def ShortSwap(l):
     pass
 
+@TODO
 def ShortNoSwap(l):
     pass
 
+@TODO
 def LongSwap(l):
     pass
 
+@TODO
 def LongNoSwap(l):
     pass
 
+@TODO
 def FloatSwap(l):
     pass
 
+@TODO
 def FloatNoSwap(l):
     pass
 
+@TODO
 def Swap_Init():
     if sys.byteorder == "little":
-        # we are on LE
+        # Little-Endian detected
         pass
     """
     TODO: check this part when needed
@@ -440,14 +447,14 @@ def Info_ValueForKey(_s: Mutable, key):
         if len(s) == 0:
             _s.SetValue(s)
             return ""
-        s = s[1;]
+        s = s[1:]
         _s.SetValue(s)
 
 
 def Info_RemoveKey(_s: Mutable, key):
     s = _s.GetValue()
     if '\\' in s:
-        # Com_Printf ("Can't use a key with a \\\n")
+        Com_Printf ("Can't use a key with a \\\n")
         return
     while True:
         if s[0] != '\\':
@@ -510,7 +517,6 @@ def Info_SetValueForKey(_s: Mutable, key, value):
         if 32 <= c < 127:
             s += c
     _s.SetValue(s)
-
 
 
 from .g_main import Com_Printf

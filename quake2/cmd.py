@@ -51,8 +51,8 @@ def Cmd_Argv(arg):
     return cmd_argv[0]
 
 
+@TODO
 def Cmd_AddCommand(cmd_name, function):
-
     pass
 
 

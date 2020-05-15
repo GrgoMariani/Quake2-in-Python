@@ -47,3 +47,8 @@ def va_args2(num_args):
     return wrapper_out
 
 
+def TODO(func):
+    def THIS_FUNCTION_IS_NOT_YET_DONE(*args, **kwargs):
+        print("Sorry. The function '{}' is still in development".format(func.__name__))
+        exit(0xFD)
+    return THIS_FUNCTION_IS_NOT_YET_DONE

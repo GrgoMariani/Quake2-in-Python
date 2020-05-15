@@ -1,4 +1,4 @@
-from wrapper_qpy.decorators import va_args, va_args2, static_vars
+from wrapper_qpy.decorators import va_args, va_args2, static_vars, TODO
 from wrapper_qpy.custom_classes import Mutable
 from wrapper_qpy.linker import LinkEmptyFunctions
 from shared.QEnums import ERROR_LVL
@@ -105,10 +105,12 @@ def Com_Error(code, msg):
     Sys_Error("%s", msg)
 
 
+@TODO
 def SZ_Init(buf, data, length):
     pass
 
 
+@TODO
 def SZ_Write(buf, data, length):
     pass
 
@@ -122,8 +124,8 @@ def Com_SetServerState(state):
     server_state = state
 
 
+@TODO
 def Qcommon_Init(argc, argv):
-    # TODO: not finished
     pass
 
 

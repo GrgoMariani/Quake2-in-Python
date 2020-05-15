@@ -254,7 +254,6 @@ def Cvar_Init():
     Cmd_AddCommand("cvarlist", Cvar_List_f)
 
 
-
 from .common import Com_Printf, Com_ServerState
 from .q_shared import Com_sprintf, Info_SetValueForKey
 from .files import FS_ExecAutoexec, FS_SetGameDir

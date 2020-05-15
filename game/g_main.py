@@ -8,6 +8,7 @@ from .reference_import import gi
 def Sys_Error(error):
     gi.error(ERROR_LVL.ERR_FATAL, "%s", error)
 
+
 @va_args
 def Com_Printf(msg):
     gi.dprintf("%s", msg)

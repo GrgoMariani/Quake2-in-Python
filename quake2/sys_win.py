@@ -1,4 +1,4 @@
-from wrapper_qpy.decorators import va_args
+from wrapper_qpy.decorators import va_args, TODO
 from shared.QCrossPlatform import MessageBox
 from shared.QConstants import NULL
 
@@ -14,10 +14,12 @@ def Sys_Error(error):
     exit(1)
 
 
+@TODO
 def Sys_ConsoleOutput(string):
     pass
 
 
+@TODO
 def WinMain(argc, argv):
     Qcommon_Init(argc, argv)
     # TODO: continue from here

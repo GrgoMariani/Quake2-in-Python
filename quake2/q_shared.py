@@ -1,6 +1,6 @@
 import math
 
-from wrapper_qpy.decorators import static_vars, va_args, va_args2
+from wrapper_qpy.decorators import static_vars, va_args, va_args2, TODO
 from wrapper_qpy.custom_classes import Mutable
 from wrapper_qpy.linker import LinkEmptyFunctions
 from shared.QEnums import Q_angle_indexes
@@ -323,27 +323,34 @@ def COM_FilePath(_in, out: Mutable):
 
 # ############# BYTE ORDER FUNCTIONS ###############
 
+@TODO
 def ShortSwap(l):
     pass
 
+@TODO
 def ShortNoSwap(l):
     pass
 
+@TODO
 def LongSwap(l):
     pass
 
+@TODO
 def LongNoSwap(l):
     pass
 
+@TODO
 def FloatSwap(l):
     pass
 
+@TODO
 def FloatNoSwap(l):
     pass
 
+@TODO
 def Swap_Init():
     if sys.byteorder == "little":
-        # we are on LE
+        # Little-Endian detected
         pass
     """
     TODO: check this part when needed
