@@ -106,12 +106,7 @@ def Com_Error(code, msg):
 
 
 @TODO
-def SZ_Init(buf, data, length):
-    pass
-
-
-@TODO
-def SZ_Write(buf, data, length):
+def Com_Quit():
     pass
 
 
@@ -125,9 +120,284 @@ def Com_SetServerState(state):
 
 
 @TODO
+def MSG_WriteChar():
+    pass
+
+
+@TODO
+def MSG_WriteByte():
+    pass
+
+
+@TODO
+def MSG_WriteShort():
+    pass
+
+
+@TODO
+def MSG_WriteShort():
+    pass
+
+
+@TODO
+def MSG_WriteLong():
+    pass
+
+
+@TODO
+def MSG_WriteFloat():
+    pass
+
+
+@TODO
+def MSG_WriteString():
+    pass
+
+
+@TODO
+def MSG_WriteCoord():
+    pass
+
+
+@TODO
+def MSG_WritePos():
+    pass
+
+
+@TODO
+def MSG_WriteAngle():
+    pass
+
+
+@TODO
+def MSG_WriteAngle16():
+    pass
+
+
+@TODO
+def MSG_WriteDeltaUsercmd(buf, _from, cmd):
+    pass
+
+
+@TODO
+def MSG_WriteDir():
+    pass
+
+
+@TODO
+def MSG_ReadDir():
+    pass
+
+
+@TODO
+def MSG_WriteDeltaEntity():
+    pass
+
+
+@TODO
+def MSG_BeginReading():
+    pass
+
+
+@TODO
+def MSG_ReadChar():
+    pass
+
+
+@TODO
+def MSG_ReadByte():
+    pass
+
+
+@TODO
+def MSG_ReadShort():
+    pass
+
+
+@TODO
+def MSG_ReadLong():
+    pass
+
+
+@TODO
+def MSG_ReadFloat():
+    pass
+
+
+@TODO
+def MSG_ReadString():
+    pass
+
+
+@TODO
+def MSG_ReadStringLine():
+    pass
+
+
+@TODO
+def MSG_ReadCoord():
+    pass
+
+
+@TODO
+def MSG_ReadPos():
+    pass
+
+
+@TODO
+def MSG_ReadPos():
+    pass
+
+
+@TODO
+def MSG_ReadAngle():
+    pass
+
+@TODO
+def MSG_ReadAngle16():
+    pass
+
+@TODO
+def MSG_ReadDeltaUsercmd():
+    pass
+
+@TODO
+def MSG_ReadData():
+    pass
+
+
+@TODO
+def SZ_Init(buf, data, length):
+    pass
+
+
+@TODO
+def SZ_Clear(buf):
+    pass
+
+
+@TODO
+def SZ_GetSpace(buf, length):
+    pass
+
+
+@TODO
+def SZ_Write(buf, data, length):
+    pass
+
+
+@TODO
+def SZ_Print(buf, data):
+    pass
+
+
+@TODO
+def COM_CheckParm(parm):
+    pass
+
+
+@TODO
+def COM_Argc():
+    pass
+
+
+@TODO
+def COM_Argv():
+    pass
+
+
+@TODO
+def COM_ClearArgv(argc, argv):
+    pass
+
+
+@TODO
+def COM_InitArgv():
+    pass
+
+
+@TODO
+def COM_AddParm(parm)
+    pass
+
+
+@TODO
+def memsearch(start, count, search):
+    pass
+
+
+@TODO
+def CopyString(_in):
+    pass
+
+
+@TODO
+def Info_Print(s):
+    pass
+
+
+@TODO
+def Z_Free(ptr):
+    pass
+
+
+@TODO
+def Z_Stats_f():
+    pass
+
+
+@TODO
+def Z_FreeTags(tag):
+    pass
+
+
+@TODO
+def Z_TagMalloc(size, tag):
+    pass
+
+
+@TODO
+def Z_Malloc(size):
+    return Z_TagMalloc(size, 0)
+
+
+@TODO
+def COM_BlockSequenceCheckByte(base, length, sequence, challenge):
+    pass
+
+
+@TODO
+def COM_BlockSequenceCRCByte(base, length, sequence):
+    pass
+
+
+@TODO
+def frand():
+    pass
+
+
+@TODO
+def crand():
+    pass
+
+
+@TODO
+def Com_Error_f():
+    pass
+
+
+@TODO
 def Qcommon_Init(argc, argv):
     pass
 
+
+@TODO
+def Qcommon_Frame(msec):
+    pass
+
+
+def Qcommon_Shutdown():
+    pass
 
 
 from .sys_win import Sys_ConsoleOutput, Sys_Error

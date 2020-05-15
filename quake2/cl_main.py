@@ -176,6 +176,7 @@ def CL_Init():
     pass
 
 
+@TODO
 @static_vars(isdown=False)
 def CL_Shutdown():
     if CL_Shutdown.isdown:

@@ -15,6 +15,6 @@ An attempt to rewrite the Quake2 source code to Python. Why? It's a good way to 
 ## Current Status
 Around 3% rewritten.
 
-Completed files: q_shared, cvar, cd_win
+Completed files: q_shared, cvar, cd_win, m_flash
 
 
