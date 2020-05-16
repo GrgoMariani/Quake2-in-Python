@@ -13,9 +13,67 @@ def Sys_Error(error):
     # TODO: check qwclsemaphore & DeinitConProc()
     exit(1)
 
+@TODO
+def Sys_Quit():
+    pass
+
+
+@TODO
+def WinError():
+    pass
+
+
+@TODO
+def Sys_ScanForCD():
+    pass
+
+
+def Sys_CopyProtect():
+    pass
+
+
+@TODO
+def Sys_Init():
+    pass
+
+
+@TODO
+def Sys_ConsoleInput():
+    pass
+
 
 @TODO
 def Sys_ConsoleOutput(string):
+    pass
+
+
+@TODO
+def Sys_SendKeyEvents():
+    pass
+
+
+@TODO
+def Sys_GetClipboardData():
+    pass
+
+
+@TODO
+def Sys_AppActivate():
+    pass
+
+
+@TODO
+def Sys_UnloadGame():
+    pass
+
+
+@TODO
+def Sys_GetGameAPI():
+    pass
+
+
+@TODO
+def ParseCommandLine():
     pass
 
 
