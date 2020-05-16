@@ -49,11 +49,18 @@ def va_args2(num_args):
 
 
 def TODO(func):
-    _context = inspect.getframeinfo(inspect.currentframe().f_back, context=0)
+    """
+    This decorator helps us rememmber that we should not be using this function as it has
+    still not been rewritten. It will replace the complete function with a one that prints
+    the current file, line and function name of the function that should have been called.
+    """
+    (filename, line_number, function_name, lines, index) = inspect.getframeinfo(inspect.currentframe().f_back)
 
     def THIS_FUNCTION_IS_NOT_YET_DONE(*args, **kwargs):
-        print(_context)
-        print("Sorry. The function '{}' is still in development".format(func.__name__))
+        print("")
+        print("Sorry. The function '{}' is still in development.  :(((".format(func.__name__))
+        print("Line {} in {}".format(line_number, filename))
+        print("")
         input("PRESS ENTER KEY TO QUIT")
         exit(0xFD)
 

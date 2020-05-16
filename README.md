@@ -1,6 +1,9 @@
 # Quake2 in Python
  A Quake2rantine project
 
+## Current Status
+Around 4% rewritten.
+
 ## Description
 An attempt to rewrite the Quake2 source code to Python. Why? It's a good way to actually read through the code.
 
@@ -11,10 +14,5 @@ An attempt to rewrite the Quake2 source code to Python. Why? It's a good way to 
 * `Quest for perfection` - The ultimate goal is to make Q2 in python compatible with Q2 in C. This means that the network connection between them should also be working.
 * `QrossPlatform`
 
-
-## Current Status
-Around 4% rewritten.
-
-Completed files: q_shared, cvar, cd_win, m_flash
-
-
+## Completed files
+q_shared, cvar, cd_win, m_flash
