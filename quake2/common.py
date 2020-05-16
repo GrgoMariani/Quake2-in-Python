@@ -317,7 +317,7 @@ def COM_InitArgv():
 
 
 @TODO
-def COM_AddParm(parm)
+def COM_AddParm(parm):
     pass
 
 

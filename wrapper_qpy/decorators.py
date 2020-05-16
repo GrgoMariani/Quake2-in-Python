@@ -1,4 +1,5 @@
 from functools import wraps
+import inspect
 
 
 def static_vars(**kwargs):
@@ -48,7 +49,12 @@ def va_args2(num_args):
 
 
 def TODO(func):
+    _context = inspect.getframeinfo(inspect.currentframe().f_back, context=0)
+
     def THIS_FUNCTION_IS_NOT_YET_DONE(*args, **kwargs):
+        print(_context)
         print("Sorry. The function '{}' is still in development".format(func.__name__))
+        input("PRESS ENTER KEY TO QUIT")
         exit(0xFD)
+
     return THIS_FUNCTION_IS_NOT_YET_DONE

@@ -13,7 +13,7 @@ An attempt to rewrite the Quake2 source code to Python. Why? It's a good way to 
 
 
 ## Current Status
-Around 3% rewritten.
+Around 4% rewritten.
 
 Completed files: q_shared, cvar, cd_win, m_flash
 
