@@ -1,4 +1,8 @@
 from wrapper_qpy.decorators import static_vars, TODO
+from wrapper_qpy.linker import LinkEmptyFunctions
+
+
+LinkEmptyFunctions(globals(), [])
 
 
 @TODO

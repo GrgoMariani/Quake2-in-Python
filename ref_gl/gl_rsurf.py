@@ -1,5 +1,9 @@
 from wrapper_qpy.custom_classes import Mutable
 from wrapper_qpy.decorators import TODO
+from wrapper_qpy.linker import LinkEmptyFunctions
+
+
+LinkEmptyFunctions(globals(), [])
 
 
 @TODO
@@ -49,12 +53,6 @@ def DrawTextureChains():
 
 @TODO
 def GL_RenderLightmappedPoly(surf):
-    pass
-
-
-
-@TODO
-def R_RenderBrushPoly():
     pass
 
 

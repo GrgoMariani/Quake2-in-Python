@@ -3,6 +3,7 @@ from wrapper_qpy.custom_classes import Mutable
 from wrapper_qpy.linker import LinkEmptyFunctions
 from shared.QEnums import ERROR_LVL
 
+
 LinkEmptyFunctions(globals(), ["Con_Print", "Com_sprintf", "va", "FS_Gamedir", "CL_Drop", "CL_Shutdown", "SV_Shutdown",
                                "Sys_ConsoleOutput", "Sys_Error"])
 
@@ -135,11 +136,6 @@ def MSG_WriteShort():
 
 
 @TODO
-def MSG_WriteShort():
-    pass
-
-
-@TODO
 def MSG_WriteLong():
     pass
 
@@ -236,11 +232,6 @@ def MSG_ReadStringLine():
 
 @TODO
 def MSG_ReadCoord():
-    pass
-
-
-@TODO
-def MSG_ReadPos():
     pass
 
 

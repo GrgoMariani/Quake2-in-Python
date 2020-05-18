@@ -1,113 +1,46 @@
 from wrapper_qpy.decorators import TODO
 from wrapper_qpy.custom_classes import Mutable
+from wrapper_qpy.linker import LinkEmptyFunctions
 
+
+LinkEmptyFunctions(globals(), [])
 
 
 @TODO
-def R_TextureAnimation(tex):
+def Netchan_Init():
     pass
 
 
 @TODO
-def DrawGLPoly(p):
+def Netchan_OutOfBand():
     pass
 
 
 @TODO
-def DrawGLFlowingPoly(fa):
+def Netchan_OutOfBandPrint():
     pass
 
 
 @TODO
-def R_DrawTriangleOutlines():
+def Netchan_Setup():
     pass
 
 
 @TODO
-def DrawGLPolyChain(p, soffset, toffset):
+def Netchan_CanReliable():
     pass
 
 
 @TODO
-def R_BlendLightmaps():
+def Netchan_NeedReliable():
     pass
 
 
 @TODO
-def R_RenderBrushPoly(fa):
+def Netchan_Transmit():
     pass
 
 
 @TODO
-def R_DrawAlphaSurfaces():
-    pass
-
-
-@TODO
-def DrawTextureChains():
-    pass
-
-
-@TODO
-def GL_RenderLightmappedPoly(surf):
-    pass
-
-
-@TODO
-def R_DrawInlineBModel():
-    pass
-
-
-@TODO
-def R_DrawBrushModel(e):
-    pass
-
-
-@TODO
-def R_RecursiveWorldNode(node):
-    pass
-
-
-@TODO
-def R_DrawWorld():
-    pass
-
-
-@TODO
-def R_MarkLeaves():
-    pass
-
-
-@TODO
-def LM_InitBlock():
-    pass
-
-
-@TODO
-def LM_UploadBlock(dynamic):
-    pass
-
-
-@TODO
-def LM_AllocBlock(w, h, _x: Mutable, _y: Mutable):
-    pass
-
-
-@TODO
-def GL_BuildPolygonFromSurface(fa):
-    pass
-
-
-@TODO
-def GL_CreateSurfaceLightmap(surf):
-    pass
-
-
-@TODO
-def GL_BeginBuildingLightmaps(m):
-    pass
-
-
-@TODO
-def GL_EndBuildingLightmaps():
+def Netchan_Process():
     pass

@@ -1,5 +1,6 @@
 from functools import wraps
 import inspect
+import random
 
 
 def static_vars(**kwargs):
@@ -48,6 +49,9 @@ def va_args2(num_args):
     return wrapper_out
 
 
+todo_map = dict()
+
+
 def TODO(func):
     """
     This decorator helps us rememmber that we should not be using this function as it has
@@ -55,11 +59,17 @@ def TODO(func):
     the current file, line and function name of the function that should have been called.
     """
     (filename, line_number, function_name, lines, index) = inspect.getframeinfo(inspect.currentframe().f_back)
+    todo_map[func.__name__] = [line_number, filename]
 
     def THIS_FUNCTION_IS_NOT_YET_DONE(*args, **kwargs):
         print("")
         print("Sorry. The function '{}' is still in development.  :(((".format(func.__name__))
         print("Line {} in {}".format(line_number, filename))
+        print("{} to go".format(len(todo_map)))
+        func_name, info = random.choice(list(todo_map.items()))
+        print("")
+        print("You might try developing the function '{}'".format(func_name))
+        print("You can find it on line {} in {}".format(info[0], info[1]))
         print("")
         input("PRESS ENTER KEY TO QUIT")
         exit(0xFD)

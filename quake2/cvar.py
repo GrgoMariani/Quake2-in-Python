@@ -2,8 +2,10 @@ from shared.QEnums import CVAR_ENUM
 from wrapper_qpy.custom_classes import Mutable
 from wrapper_qpy.linker import LinkEmptyFunctions
 
+
 LinkEmptyFunctions(globals(), ["Com_Printf", "Com_ServerState", "Com_sprintf", "Info_SetValueForKey", "FS_ExecAutoexec",
                                "FS_SetGameDir", "Cmd_Argc", "Cmd_Argv", "Cmd_AddCommand"])
+
 
 class cvar_t:
     def __init__(self):

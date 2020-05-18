@@ -519,6 +519,4 @@ def Info_SetValueForKey(_s: Mutable, key, value):
     _s.SetValue(s)
 
 
-
-
-from .common import Com_Printf
+from .gl_rmain import Com_Printf

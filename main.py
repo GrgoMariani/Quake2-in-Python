@@ -1,5 +1,5 @@
 import sys
 
-from quake2.sys_win import WinMain
+import quake2, game, ref_gl
 
-WinMain(len(sys.argv), sys.argv)
+quake2.sys_win.WinMain(len(sys.argv), sys.argv)

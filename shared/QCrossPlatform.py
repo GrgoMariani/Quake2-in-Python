@@ -1,4 +1,4 @@
-import ctypes  # An included library with Python install.
+import ctypes
 
 
 def MessageBox(num, title, text, style):

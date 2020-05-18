@@ -4,6 +4,9 @@
 ## Current Status
 Around 4% rewritten.
 
+
+1966 more functions to go.
+
 ## Description
 An attempt to rewrite the Quake2 source code to Python. Why? It's a good way to actually read through the code.
 

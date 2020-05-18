@@ -1,4 +1,8 @@
 from wrapper_qpy.decorators import TODO, va_args, va_args2
+from wrapper_qpy.linker import LinkEmptyFunctions
+
+
+LinkEmptyFunctions(globals(), [])
 
 
 @TODO

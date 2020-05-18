@@ -1,13 +1,12 @@
 from wrapper_qpy.decorators import TODO
+from wrapper_qpy.linker import LinkEmptyFunctions
+
+
+LinkEmptyFunctions(globals(), [])
 
 
 @TODO
 def GetItemByIndex(index):
-    pass
-
-
-@TODO
-def FindItemByClassname(classname):
     pass
 
 

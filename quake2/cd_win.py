@@ -1,3 +1,9 @@
+from wrapper_qpy.linker import LinkEmptyFunctions
+
+
+LinkEmptyFunctions(globals(), [])
+
+
 """
     We will be skipping most of these functions as they only contain
     reading the data from the cd

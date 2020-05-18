@@ -2,7 +2,9 @@ from shared.QClasses import sizebuf_t
 from wrapper_qpy.decorators import TODO
 from wrapper_qpy.linker import LinkEmptyFunctions
 
+
 LinkEmptyFunctions(globals(), ["SZ_Init", "SZ_Write", "Com_Printf"])
+
 
 MAX_ALIAS_NAME = 32
 ALIAS_LOOP_COUNT = 16

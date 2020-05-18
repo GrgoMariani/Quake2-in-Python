@@ -1,6 +1,10 @@
 from wrapper_qpy.decorators import va_args, TODO
 from shared.QEnums import ERROR_LVL
 from .reference_import import gi
+from wrapper_qpy.linker import LinkEmptyFunctions
+
+
+LinkEmptyFunctions(globals(), [])
 
 
 @TODO
