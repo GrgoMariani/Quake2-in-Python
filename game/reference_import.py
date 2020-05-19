@@ -1,3 +1,8 @@
+"""
+Reference import file is an easier way for us to connect the modules in the way the dlls are connected
+"""
+
+
 class game_import_t:
     def __init__(self):
         self.bprintf = None
