@@ -166,6 +166,11 @@ def parasite_refidget():
     pass
 
 
+@TODO
+def parasite_stand():
+    pass
+
+
 parasite_frames_fidget = [
     mframe_t(ai_stand, 0, parasite_scratch),
     mframe_t(ai_stand, 0, None),
@@ -176,9 +181,19 @@ parasite_frames_fidget = [
 ]
 parasite_move_fidget = mmove_t(FRAME_stand22, FRAME_stand27, parasite_frames_fidget, parasite_refidget)
 
-@TODO
-def parasite_end_fidget():
-    pass
+parasite_frames_end_fidget = [
+    mframe_t(ai_stand, 0, parasite_scratch),
+    mframe_t(ai_stand, 0, None),
+    mframe_t(ai_stand, 0, None),
+    mframe_t(ai_stand, 0, None),
+    mframe_t(ai_stand, 0, None),
+    mframe_t(ai_stand, 0, None)
+]
+parasite_move_end_fidget = mmove_t(FRAME_stand28, FRAME_stand35, parasite_frames_end_fidget, parasite_stand)
+
+
+def parasite_end_fidget(_self):
+    _self.monsterinfo.currentmove = parasite_move_end_fidget
 
 
 def parasite_do_fidget(_self):
@@ -187,11 +202,6 @@ def parasite_do_fidget(_self):
 
 @TODO
 def parasite_idle():
-    pass
-
-
-@TODO
-def parasite_stand():
     pass
 
 
