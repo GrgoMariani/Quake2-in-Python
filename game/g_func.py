@@ -1,5 +1,6 @@
 from wrapper_qpy.decorators import TODO
 from wrapper_qpy.linker import LinkEmptyFunctions
+from .global_vars import level
 
 
 LinkEmptyFunctions(globals(), [])
@@ -339,9 +340,9 @@ def door_secret_move4(_self):
     pass
 
 
-@TODO
 def door_secret_move5(_self):
-    pass
+    _self.nextthink = level.time + 1.0
+    _self.think = door_secret_move6
 
 
 @TODO
