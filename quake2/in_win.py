@@ -1,5 +1,6 @@
 from wrapper_qpy.decorators import TODO
 from wrapper_qpy.linker import LinkEmptyFunctions
+from .sys_win import ActiveApp
 
 
 LinkEmptyFunctions(globals(), [])
@@ -60,9 +61,10 @@ def IN_Frame():
     pass
 
 
-@TODO
 def IN_Move(cmd):
-    pass
+    IN_MouseMove(cmd)
+    if ActiveApp != 0:
+        IN_JoyMove(cmd)
 
 
 @TODO
