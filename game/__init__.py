@@ -1,3 +1,4 @@
+import game.global_vars
 import game.g_ai
 import game.g_chase
 import game.g_cmds

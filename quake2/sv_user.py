@@ -2,7 +2,9 @@ from wrapper_qpy.decorators import TODO
 from wrapper_qpy.linker import LinkEmptyFunctions
 
 
-LinkEmptyFunctions(globals(), [])
+LinkEmptyFunctions(globals(), ["SV_DropClient"])
+
+sv_client = None
 
 
 @TODO
@@ -40,9 +42,8 @@ def SV_BeginDownload_f():
     pass
 
 
-@TODO
 def SV_Disconnect_f():
-    pass
+    SV_DropClient(sv_client)
 
 
 @TODO
@@ -73,3 +74,6 @@ def SV_ClientThink(cl, cmd):
 @TODO
 def SV_ExecuteClientMessage(cl):
     pass
+
+
+from .sv_main import SV_DropClient

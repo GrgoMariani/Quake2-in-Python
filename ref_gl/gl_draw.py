@@ -1,9 +1,11 @@
 from wrapper_qpy.decorators import TODO
 from wrapper_qpy.custom_classes import Mutable
 from wrapper_qpy.linker import LinkEmptyFunctions
+from shared.QEnums import imagetype_t
+from shared.QConstants import MAX_QPATH
 
 
-LinkEmptyFunctions(globals(), [])
+LinkEmptyFunctions(globals(), ["Com_sprintf", "GL_FindImage"])
 
 
 @TODO
@@ -16,9 +18,15 @@ def Draw_Char(x, y, num):
     pass
 
 
-@TODO
 def Draw_FindPic(name):
-    pass
+    gl = None
+    fullname = Mutable("")
+    if name[0] != "/" and name[0] != "\\":
+        Com_sprintf(Mutable, MAX_QPATH, "pics/%s.pcx", name)
+        gl = GL_FindImage(fullname.GetValue(), imagetype_t.it_pic)
+    else:
+        gl = GL_FindImage(fullname.GetValue(), imagetype_t.it_pic)
+    return gl
 
 
 @TODO
@@ -54,3 +62,6 @@ def Draw_FadeScreen():
 @TODO
 def Draw_StretchRaw(x, y, w, h, cols, rows, data):
     pass
+
+from .q_shared import Com_sprintf
+from .gl_image import GL_FindImage

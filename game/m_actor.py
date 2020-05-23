@@ -2,6 +2,8 @@ from wrapper_qpy.decorators import TODO
 from wrapper_qpy.custom_classes import Mutable
 from .reference_import import gi
 from wrapper_qpy.linker import LinkEmptyFunctions
+from shared.QEnums import MONSTER_AI_FLAGS
+from .global_vars import level
 
 
 LinkEmptyFunctions(globals(), [])
@@ -54,9 +56,12 @@ def actor_die():
     pass
 
 
-@TODO
-def actor_fire():
-    pass
+def actor_fire(_self):
+    actorMachineGun(_self)
+    if level.time >= _self.monsterinfo.pausetime:
+        _self.monsterinfo.aiflags &= ~MONSTER_AI_FLAGS.AI_HOLD_FRAME
+    else:
+        _self.monsterinfo.aiflags &= MONSTER_AI_FLAGS.AI_HOLD_FRAME
 
 
 @TODO

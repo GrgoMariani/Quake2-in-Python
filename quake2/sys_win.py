@@ -6,6 +6,8 @@ from shared.QConstants import NULL
 
 LinkEmptyFunctions(globals(), ["Qcommon_Init"])
 
+ActiveApp = 0
+
 
 @va_args
 def Sys_Error(error):

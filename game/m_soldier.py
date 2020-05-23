@@ -47,9 +47,8 @@ def soldier_fire():
     pass
 
 
-@TODO
-def soldier_fire1():
-    pass
+def soldier_fire1(_self):
+    soldier_fire(_self, 0)
 
 
 @TODO
