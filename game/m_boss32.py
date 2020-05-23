@@ -643,7 +643,6 @@ def MakronHyperblaster():
     pass
 
 
-@TODO
 def makron_pain(_self, other, kick, damage):
     if _self.health < (_self.max_health/2):
         _self.skinnum = 1
