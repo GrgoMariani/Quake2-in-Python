@@ -6,9 +6,12 @@ from wrapper_qpy.linker import LinkEmptyFunctions
 from shared.QEnums import SOUND_ATTN_VALUES, SOUND_CHANNELS
 from shared.QClasses import mmove_t, mframe_t
 from .global_vars import level, skill
+from .m_flash import monster_flash_offset
+from shared.QConstants import MZ2_MAKRON_RAILGUN_1
 
 
-LinkEmptyFunctions(globals(), ["ai_move"])
+LinkEmptyFunctions(globals(), ["ai_move", "AngleVectors", "G_ProjectSource", "_VectorSubtract", "VectorNormalize",
+                               "monster_fire_railgun"])
 
 
 FRAME_attak101 = 0
@@ -633,9 +636,16 @@ def MakronSaveloc():
     pass
 
 
-@TODO
-def MakronRailgun():
-    pass
+def MakronRailgun(_self):
+    start = [0, 0, 0]
+    _dir = [0, 0, 0]
+    forward = [0, 0, 0]
+    right = [0, 0, 0]
+    AngleVectors(_self.s.angles, forward, right, None)
+    G_ProjectSource(_self.s.origin, monster_flash_offset[MZ2_MAKRON_RAILGUN_1], forward, right, start)
+    _VectorSubtract(_self.pos1, start, _dir)
+    VectorNormalize(_dir)
+    monster_fire_railgun(_self, start, _dir, 50, 100, MZ2_MAKRON_RAILGUN_1)
 
 
 @TODO
@@ -726,4 +736,6 @@ def MakronToss():
 
 
 from game.g_ai import ai_move
-
+from .q_shared import AngleVectors, _VectorSubtract, VectorNormalize
+from .g_utils import G_ProjectSource
+from .g_monster import monster_fire_railgun
